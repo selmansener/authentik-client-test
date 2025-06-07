@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import { useAuth } from './auth/AuthProvider'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { SecurePage } from './pages/SecurePage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +17,7 @@ function App() {
           <>
             <p>Signed in as {(auth.user as any).email ?? 'User'}</p>
             <button onClick={logout}>Logout</button>
+            <SecurePage />
           </>
         ) : (
           <button onClick={login}>Login</button>
