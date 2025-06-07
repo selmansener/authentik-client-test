@@ -1,13 +1,25 @@
 import { useState } from 'react'
+import { useAuth } from './auth/AuthProvider'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const { auth, login, logout } = useAuth()
 
   return (
     <>
+      <div className="auth">
+        {auth.user ? (
+          <>
+            <p>Signed in as {(auth.user as any).email ?? 'User'}</p>
+            <button onClick={logout}>Logout</button>
+          </>
+        ) : (
+          <button onClick={login}>Login</button>
+        )}
+      </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
