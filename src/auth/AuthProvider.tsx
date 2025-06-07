@@ -67,6 +67,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setAuth({})
   }
 
+
   async function fetchUserInfo(token: string): Promise<unknown> {
     try {
       const res = await fetch(USERINFO_ENDPOINT, {
@@ -125,6 +126,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       accessToken: access_token,
       idToken: id_token,
       user,
+
     })
     window.history.replaceState({}, '', '/')
   }

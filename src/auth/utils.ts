@@ -14,6 +14,7 @@ export function isJwe(token: string): boolean {
 
 export function decodeJwt(token: string): unknown | undefined {
   if (!isJwt(token)) return undefined;
+
   const [, payload] = token.split('.');
   const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
   const json = decodeURIComponent(
